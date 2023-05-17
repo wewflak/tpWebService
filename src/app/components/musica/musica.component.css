@@ -1,0 +1,114 @@
+#body-movies{
+    overflow-x: hidden;
+    font-family: 'Poppins',sans-serif;
+}
+.cover{
+    margin: 0;
+    padding: 0;
+    background: rgb(2,0,36);
+    background: linear-gradient(180deg, rgba(2,0,36,1) 5%, rgb(19, 24, 99) 66%, rgb(11, 1, 116) 100%);
+    width: 100%;
+    height: 100vh;
+}
+.card{
+    margin: 1%;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px  rgba(17,17,26,0.1), 0 16px 56px  rgba(17,17,26,0.1), 0 24px 80px  rgba(172, 172, 175, 0.1), 0 0 0  currentColor, 0 0 0  currentColor;
+}
+aside{
+    text-align: left;
+}
+input{
+    width: 70%;
+}
+.search-bar, .head-search{
+    width: 100%;
+}
+.main{
+    float: left;
+    border: #fefeff 20px solid;
+    
+}
+.aside{
+    float: right;
+}
+.artist-side{
+    top: 5;
+    position: absolute;
+}
+.aside .img-artist img{
+    border-radius: 16px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-top: 32%;
+    margin-left: 7%;
+    width: 90%;
+    height: 90%;
+}
+.search-bar{
+    align-items: center;
+    justify-content: center;
+    display: inline-block;
+}
+.search-bar .btn-search{
+    background-color: #fefeff;
+    color: black;
+    border: solid transparent 0.1em;
+    margin: 1%;
+    border-radius: 12px;
+    display: inline-block;
+}
+.search-bar input{
+    margin-left: 2%;
+    background-color: #10002b;
+    color: #fefeff;
+    display: inline-block;
+}
+.img-artist{
+    border-bottom: solid #023E8A 0.1em;
+}
+.artist-title{
+    margin-top: 2%;
+}
+.card img{
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+}
+.card audio{
+    width: 90%;
+}
+.head-search input{
+    margin-left: 2%;
+    display: inline-block;
+}
+.head-search .btn-search{
+    background-color: #023E8A;
+    color: #fefeff;
+    border-color: solid transparent 0.1em;
+    margin: 2%;
+    border-radius: 12px;
+    display: inline-block;
+}
+.cards{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(350px,1fr));
+    padding: 2rem;
+    row-gap: 2vh;
+    column-gap: 3vh;
+    max-height: 150vh;
+}
+@media (max-width: 575.98px) {
+    .aside img{
+        position: relative;
+        width: 25rem;
+        height: 40rem;
+    }
+}
+@media (max-width: 910.98px) {
+    .aside img{
+        position: relative;
+        width: 25rem;
+        height: 40rem;
+        margin-bottom: 4%;
+    }
+}

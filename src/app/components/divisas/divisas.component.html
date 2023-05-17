@@ -1,0 +1,84 @@
+<p>divisas works!</p>
+<body id="body-conversor">
+    <br>
+    <form #musica="ngForm" >
+        <input name="searchedVideo" id="searchedVideo" class="form-control" type="text" placeholder="Buscar artista" [(ngModel)]="searchedVideo">
+        <button (click)="getVideos()" class="btn-search"><i class="bi bi-search"></i>Buscar</button>
+    </form>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+            </tr>
+        </thead>
+        <tbody >
+            <tr *ngFor="let item of videosSearched">
+                <th scope="row">{{item.idVideo}}</th>
+                <td>{{item.nameVideo}}</td>
+                <td>{{item.urlVideo}}</td>
+                <td><img src="{{item.chanelPicture}}" style="width: 55px;">
+                    <br>
+                    {{item.channelVideo}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+        <div class="row">
+            <div class="column col-md-8 col-lg-8 col-sm-12 d-sm-none d-md-block d-none d-sm-block align-self-start">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th colspan="2"></th>
+                            <th scope="col" *ngFor="let code of currencyCodes">
+                                <div class="text-center">
+                                    <img src="../../../assets/icon/{{code | uppercase}}.ico" alt="" class="icon-coin">
+                                    <p>{{code | uppercase}}</p>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center">
+                        <tr *ngFor="let tr of content">
+                            <th scope="row">
+                                <img src="../../../assets/icon/{{tr.code | uppercase}}.ico" alt="" class="icon-coin">
+                                <div class="row">
+                                    <div class="text-center text">
+                                        1 {{tr.code | uppercase}}
+                                    </div>
+                                </div>
+                            </th>
+                            <td *ngFor="let i of tr.amounts">{{i | number:'1.2-3'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="column col-lg-4 col-md-4 col-sm-12 align-self-end col-12">
+                <div class="menu">
+                    <div class="title">
+                        <h4>Conversor de divisas</h4>
+                    </div>
+                    <form>
+                        <div class="mb-3">
+                            <label for="old_amount" class="form-label label">Cantidad</label>
+                            <input  type="number" class="form-control form" id="exampleInputText1" min="0" required>
+                        </div>
+                        <label for="exampleInputText1" class="form-label label">De: </label>
+                        <select class="form-select form" aria-label="Default select example">
+                            <option selected>Elija una opcion</option>
+                            <option [value]="option" *ngFor="let option of currencyCodes">{{option | uppercase}}</option>
+                        </select>
+                        <label for="exampleInputText1" class="form-label label">A: </label>
+                        <select class="form-select form" aria-label="Default select example">
+                            <option selected>Elija una opcion</option>
+                            <option [value]="option" *ngFor="let option of currencyCodes">{{option | uppercase}}</option>
+                        </select>
+                        <input id="disabled"class="form-control" type="text" aria-label="Disabled input example" disabled>
+                        <button type="submit" class="btn">Convertir</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+</body>

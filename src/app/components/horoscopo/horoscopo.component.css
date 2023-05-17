@@ -1,0 +1,72 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+::root{
+    --bs-breakpoint-xs: 576px;
+    --bs-breakpoint-sm: 768px;
+    --bs-breakpoint-md: 992px;
+    --bs-breakpoint-lg: 1200px;
+    /*--bs-breakpoint-xl: 1200px;
+    --bs-breakpoint-xxl: 1400px;*/
+}
+html, body{
+    margin: 0;
+    padding: 0;
+}
+body{
+    color: #252422;
+    background-color: #fefeff;
+    overflow-x: hidden;
+    font-family: 'Poppins',sans-serif;
+}
+#body-horoscope{
+    background-color: #fefeff;
+    color: #252422;
+}
+#contain-cards{
+    background-color: transparent;
+    color: inherit;
+}
+#contain-cards .card{
+    background-color: transparent;
+    color: inherit;
+    border: 0.1em #2b0b4b solid;
+}
+#horoscope-section{
+    background-color: transparent;
+}
+#horoscope-section .accordion-item, #horoscope-section button{
+    background-color: transparent;
+}
+#horoscope-section button{
+    border: 0.08em #2b0b4b solid;
+    border-radius: 12px;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: 0 transparent solid;
+    border-bottom: 0 transparent solid;
+}
+.button{
+    background-color: #03045E;
+    width: 50%;
+    color: #fefeff;
+    border: #fefeff solid 0.1em;
+    border-radius: 12px;
+    text-align: center;
+    justify-content: center;
+}
+.oculto{
+    display: none;
+}
+.horoscope-data{
+    margin-left: 5%;
+}
+.horoscope-header h4{
+    font-weight: bold;
+}
+.horoscope-header{
+    border-bottom: #03045E solid 0.1em;
+}

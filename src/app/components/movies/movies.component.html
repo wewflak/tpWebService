@@ -1,0 +1,30 @@
+<p>movies works!</p>
+<button (click)="getMovies()">iniciar</button>
+
+<div class="head-search">
+    <br>
+    <form #musica="ngForm" >
+        <input name="movieSearched" id="movieSearched" class="form-control" type="text" placeholder="Buscar pelicula" [(ngModel)]="movieSearched">
+        <button (click)="getMovies()" class="btn-search"><i class="bi bi-search"></i>Buscar</button>
+    </form>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Titulo</th>
+            <th scope="col">Puntaje</th>
+            <th scope="col">Año</th>
+            <th scope="col"> Accion</th>
+        </tr>
+    </thead>
+    <tbody >
+        <tr *ngFor="let item of moviesSearched">
+            <th scope="row">{{item.imdbId}}</th>
+            <td>{{item.movieTitle}}</td>
+            <td>{{item.movieScore}}</td>
+            <td>{{item.movieYear}}</td>
+            <td><button class="btn btn-danger" (click)="goDetail(item.imdbId)">Ver Detalle pelicula</button></td>
+        </tr>
+    </tbody>
+</table>
