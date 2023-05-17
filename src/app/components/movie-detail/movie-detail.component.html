@@ -1,10 +1,45 @@
 <p>movie-detail works!</p>
 <div class="container">
-    <div class="info">
-        <div class="name">
+    <div class="section-right">
+            <div class="name">
+                <h3>{{detail.title}}</h3>
+            </div>
+            <div class="card-img">
+                <img src="{{detail.poster}}" alt="" style="width:18rem">
+            </div>
+    </div>
+        <div class="section-left">
+            <h4>
+                Descripcion
+            </h4>
+            <p>
+                {{detail.description}}
+            </p>
+            <div class="extra-info">
+                    <div class="bio-box1">
+                    <span class="span-title">Año:</span> <span class="span-text"> {{detail.year}}</span>
+                    </div>
+                    <div class="bio-box2">
+                    <span class="span-title">Fecha de Nacimiento: </span> <span  class="span-text">{{detail.released | date}}</span>
+                    </div>
+                    <div class="bio-box3">
+                    <span class="span-title">Duracion: </span> <span  class="span-text">{{detail.runtime}} minutos</span>
+                    </div>
+                    <div class="bio-box4">
+                    <span class="span-title">Pais: </span> <span  class="span-text">{{detail.country}}</span>
+                    </div>
+                    <div class="bio-box5">
+                    <span class="span-title">Lenguaje: </span> <span  class="span-text">{{detail.language}}</span>
+                    </div>
+                    <div class="bio-box6">
+                    <span class="span-title">Lenguaje: </span> <span  class="span-text">{{detail.status}}</span>
+                    </div>
+            </div>
+            <iframe width="560" height="315" src="{{detail.trailer}}" frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen>
+
+            </iframe>
+            
         </div>
-    </div>
-    <div class="card-img">
-        <img src="" alt="">
-    </div>
 </div>

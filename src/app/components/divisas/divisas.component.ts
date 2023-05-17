@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Album } from 'src/app/models/album';
 import { Divisa } from 'src/app/models/divisa';
 import { DivisasService } from 'src/app/services/divisas.service';
@@ -8,7 +8,7 @@ import { DivisasService } from 'src/app/services/divisas.service';
   templateUrl: './divisas.component.html',
   styleUrls: ['./divisas.component.css']
 })
-export class DivisasComponent {
+export class DivisasComponent implements OnInit{
   divisa!: Divisa
   searchedVideo!:string
   video!:Album
@@ -16,27 +16,42 @@ export class DivisasComponent {
   submittedVideo=false
   videosSearched:Array<Album>
   submitted = false
-  currencyCodes = ["usd", "eur", "ars", "jpy", "cny"]
+  currencyCodes = ["USD", "EUR", "ARS"]
   content: any[] = [
-    {code: "usd", amounts: []},
-    {code: "eur", amounts: []},
-    {code: "ars", amounts: []},
-    {code: "jpy", amounts: []},
-    {code: "cny", amounts: []}
+    {code: "USD", amounts: []},
+    {code: "EUR", amounts: []},
+    {code: "ARS", amounts: []}
   ]
   constructor(private currencyService: DivisasService){
     this.divisa = new Divisa()
     this.videosSearched = new Array<Album>
-    // for (let i = 0; i< this.currencyCodes.length; i++){
-    //   for(let j = 0; j<this.currencyCodes.length; j++){
-    //     this.currencyService.convertir(this.currencyCodes[i], this.currencyCodes[j],1).subscribe(
-    //       data=>this.content[i].amounts.push(data.new_amount)
-    //     )
-    //   }
-    // }
+    for (let i = 0; i< this.currencyCodes.length; i++){
+      for(let j = 0; j<this.currencyCodes.length; j++){
+        this.currencyService.getTextConvertidor(this.currencyCodes[i], this.currencyCodes[j], '1').subscribe(
+          data=>this.content[i].amounts.push(data.converted_amount)
+          
+        )
+      }
+    }
+    
   }
+  convertidor(){
+    this.currencyService.getTextConvertidor('ARS','USD','10').subscribe(
+      result=>{
+            console.log(result)
+      },
+      error=>{
+                console.log(error)
+      }
+     )
+  }
   pruebaVideo(){
-
+    
+    for (let i = 0; i< this.currencyCodes.length; i++){
+      for(let j = 0; j<this.currencyCodes.length; j++){
+          console.log(this.content[i].amounts[j])
+      }
+    }
   }
   getVideos(){
     this.currencyService.getVideos(this.searchedVideo, 'video', true).subscribe(async(results:any)=>{
@@ -57,7 +72,7 @@ export class DivisasComponent {
   }
 }
   pruebaConversor(){
-    this.currencyService.conversor("ARS","USD","10").subscribe(
+    this.currencyService.conversor("ARS","USD",10).subscribe(
       result=>{
         console.log(result)
       },

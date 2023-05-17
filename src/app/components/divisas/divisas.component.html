@@ -5,6 +5,9 @@
         <input name="searchedVideo" id="searchedVideo" class="form-control" type="text" placeholder="Buscar artista" [(ngModel)]="searchedVideo">
         <button (click)="getVideos()" class="btn-search"><i class="bi bi-search"></i>Buscar</button>
     </form>
+    <button (click)="pruebaVideo()">
+        Prueba
+    </button>
     <table class="table">
         <thead>
             <tr>
@@ -50,7 +53,7 @@
                                     </div>
                                 </div>
                             </th>
-                            <td *ngFor="let i of tr.amounts">{{i | number:'1.2-3'}}</td>
+                            <td *ngFor="let i of tr.amounts">{{i | number: '1-2,3'}}</td>
                         </tr>
                     </tbody>
                 </table>

@@ -1,5 +1,5 @@
 
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -11,38 +11,34 @@ export class DivisasService {
   constructor(private _http: HttpClient) { 
 
   }
-  public convertir(have: string, want:string, amount:number) : Observable<any>{
-    const options = {
-      method: "GET",
-      params: {
-        have: have,
-        want: want,
-        amount:amount
-      },
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'X-RapidAPI-Key': '18359b2048mshefa50201df80486p14268djsncfef2ea642ec',
-        'X-RapidAPI-Host': 'currency-converter-by-api-ninjas.p.rapidapi.com'
-      })
-    }
-    return this._http.get('https://currency-converter-by-api-ninjas.p.rapidapi.com/v1/convertcurrency',options);
-  }
-  public conversor(have:string, want:string, amount:string): Observable<any>{
-    const options = {
-      method: "POST",
-      params: {
-        'from-type': have,
-        'to-type': want,
-        'from-value':amount
-      },
+  getTextConvertidor(from_type:string , to_type : string , from_value : string):Observable<any>{
+    const httpOptions = {
       headers: new HttpHeaders({
         'content-type': 'application/x-www-form-urlencoded',
-        'user-id':'lisanwn',
-        'X-RapidAPI-Key': 'BkemZIyGdz53ngVg5fTduQFpfxSmnBtXlhlrCIEi7al3NcdX',
+        'X-RapidAPI-Key': '18359b2048mshefa50201df80486p14268djsncfef2ea642ec',
         'X-RapidAPI-Host': 'community-neutrino-currency-conversion.p.rapidapi.com'
+      }),
+      }
+      const body = new HttpParams()
+      .set('from-value',from_value )
+      .set('from-type', from_type)
+      .set('to-type',to_type);
+      return this._http.post("https://community-neutrino-currency-conversion.p.rapidapi.com/convert",body, httpOptions);
+      }
+
+  public conversor(from:string, to:string, amount:number): Observable<any>{
+    const options = {
+      params: {
+        from: from,
+        to: to,
+        amount: amount
+      },
+      headers: new HttpHeaders({
+        'X-RapidAPI-Key': '18359b2048mshefa50201df80486p14268djsncfef2ea642ec',
+        'X-RapidAPI-Host': 'currency-converter18.p.rapidapi.com'
       })
     }
-    return this._http.post('https://community-neutrino-currency-conversion.p.rapidapi.com/convert', options);
+    return this._http.get('https://currency-converter18.p.rapidapi.com/api/v1/convert', options);
 }
 public getVideos(query:string,type:string,safesearch:boolean){
     

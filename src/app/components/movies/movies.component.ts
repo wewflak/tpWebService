@@ -24,7 +24,7 @@ export class MoviesComponent {
     })
   }
   asignMovies(array:any){
-    for(let i=0;i<array.length;i++){
+    for(let i=0;i<array.length && i<25;i++){
       // this.movie.movieTitle = array[i].title
       // this.movie.imdbId = array[i].id
       // this.movie.movieScore = array[i].score
