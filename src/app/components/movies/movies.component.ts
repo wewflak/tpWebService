@@ -18,10 +18,16 @@ export class MoviesComponent {
   ngOnInit(){
   }
   public getMovies(){
+    this.clearArray()
     this.moviesService.getMovies(this.movieSearched,'m').subscribe( async (data : any ) =>{
       console.log(data.search[0])
       this.asignMovies(data.search)
     })
+  }
+  clearArray(){
+    while(this.moviesSearched.length>0){
+      this.moviesSearched.pop()
+    }
   }
   asignMovies(array:any){
     for(let i=0;i<array.length && i<25;i++){

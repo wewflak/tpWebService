@@ -1,0 +1,46 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+html, body{
+    margin: 0;
+    padding: 0;
+}
+body{
+    color: #252422;
+    background-color: #fefeff;
+    overflow-x: hidden;
+    font-family: 'Poppins',sans-serif;
+}
+.container{
+    display: flex;
+}
+.section-rigth{
+    width: 30%;
+    float: right;
+}
+.section-left{
+    width: 65%;
+    float: left;
+}
+.bio{
+    font:inherit;
+    line-height: 28px;
+    text-align: center;
+    position: absolute;
+    padding: 0.5em;
+    top:220px;
+}
+.span-title{
+    font-size: 17px;
+    font-weight: 500;
+    vertical-align: bottom;
+}
+.span-text{
+    font-size: 16px;
+    vertical-align: bottom;
+}
+.bio-box1, .bio-box2, .bio-box3, .bio-box4{
+    display: flex;
+}

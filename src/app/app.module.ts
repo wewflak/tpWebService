@@ -12,6 +12,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { RouterModule } from '@angular/router';
 import { MoviesComponent } from './components/movies/movies.component';
 import { MovieDetailComponent } from './components/movie-detail/movie-detail.component';
+import { SafePipe } from './models/Pipe';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { MovieDetailComponent } from './components/movie-detail/movie-detail.com
     HoroscopoComponent,
     HeaderComponent,
     MoviesComponent,
-    MovieDetailComponent
+    MovieDetailComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,
