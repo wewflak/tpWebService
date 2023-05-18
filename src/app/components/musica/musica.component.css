@@ -84,8 +84,8 @@ input{
 .head-search .btn-search{
     background-color: #023E8A;
     color: #fefeff;
-    border-color: solid transparent 0.1em;
-    margin: 2%;
+    border: solid transparent 0.1em;
+    margin: 1%;
     border-radius: 12px;
     display: inline-block;
 }

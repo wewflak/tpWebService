@@ -16,6 +16,14 @@ export class DivisasComponent implements OnInit{
   submittedVideo=false
   videosSearched:Array<Album>
   submitted = false
+  base!:string
+  desired!:string
+  amount!:number
+  from!:string
+  to!:string
+  result!:number
+  currencies: string[] = ['EUR', 'USD', 'ARS'];
+  exchangeRates: { [key: string]: number } = {};
   currencyCodes = ["USD", "EUR", "ARS"]
   content: any[] = [
     {code: "USD", amounts: []},
@@ -25,26 +33,38 @@ export class DivisasComponent implements OnInit{
   constructor(private currencyService: DivisasService){
     this.divisa = new Divisa()
     this.videosSearched = new Array<Album>
-    for (let i = 0; i< this.currencyCodes.length; i++){
-      for(let j = 0; j<this.currencyCodes.length; j++){
-        this.currencyService.getTextConvertidor(this.currencyCodes[i], this.currencyCodes[j], '1').subscribe(
-          data=>this.content[i].amounts.push(data.converted_amount)
-          
-        )
-      }
-    }
-    
   }
-  convertidor(){
-    this.currencyService.getTextConvertidor('ARS','USD','10').subscribe(
-      result=>{
-            console.log(result)
-      },
-      error=>{
-                console.log(error)
-      }
-     )
-  }
+  async fetchExchangeRates() {
+    try {
+      for (let i = 0; i < this.currencyCodes.length; i++) {
+        this.base = this.currencyCodes[i]
+        console.log(this.base + ' base')
+        for (let j = 0; j < this.currencyCodes.length; j++) {
+          this.desired= this.currencyCodes[j]
+          console.log(this.desired + ' deseada')
+          // this.currencyService.getExchangeRate(this.base, this.desired, 1).subscribe(
+          //   data =>{ 
+          //     this.content[i].amounts.push(data.conversion_rate)
+          //   })
+        }
+      }
+    } catch (error) {
+      console.error('An error occurred while fetching exchange rates.', error);
+    }
+  }
+public async convertCurrencies(baseCurrency: string, targetCurrency: string, amount:number): Promise<void> {
+  this.currencyService.getExchangeRate(baseCurrency, targetCurrency, amount).subscribe(
+    result=>{
+      this.submitted=true
+      console.log(result)
+      console.log(result.conversion_rate)
+      this.result = result.conversion_rate
+    },
+    error=>{
+      console.log(error)
+    }
+  )
+}
   pruebaVideo(){
     
     for (let i = 0; i< this.currencyCodes.length; i++){
@@ -71,26 +91,8 @@ export class DivisasComponent implements OnInit{
     this.videosSearched.push(nuevo)
   }
 }
-  pruebaConversor(){
-    this.currencyService.conversor("ARS","USD",10).subscribe(
-      result=>{
-        console.log(result)
-      },
-      error=>{
-        console.log(error)
-      }
-      )
+  ngOnInit(): void{
+
+    this.fetchExchangeRates()
   }
-  ngOnInit(): void{}
-  // convertir(have: string, want:string, amount: number){
-  //   this.currencyService.convertir(have, want, amount).subscribe(
-  //     (data:any)=>{
-  //       this.divisa.old_amount= amount
-  //       this.divisa.old_currency= have
-  //       this.divisa.new_currency= want
-  //       this.divisa.new_amount= data.new_amount
-  //       this.submitted=true
-  //     }
-  //   )
-  // }
 }

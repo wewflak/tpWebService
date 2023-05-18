@@ -29,7 +29,7 @@ displayedColumns=['id', 'picture', 'name'];
 filterArtist:any;
 ngOnInit(){
   this.formModal=new window.bootstrap.Modal(
-    document.getElementById("exampleModal")
+    document.getElementById("musicModal")
   )
   this.modalError = new window.bootstrap.Modal(
     document.getElementById("compra")
@@ -50,6 +50,10 @@ constructor(private artistService: MusicaService, private router:Router){
 getArtists() {
   console.log(this.artistSearched)
   this.cleanTracks();
+  if(this.artistSearched.length==0){
+    console.log('no pasa')
+    this.openModal()
+  }else{
   this.artistService.getArtist(this.artistSearched).subscribe(async (data: any) => {
     this.submitted = true
     this.objectData = await data.data;
@@ -57,6 +61,7 @@ getArtists() {
     this.artistId = data.data[0].artist.id
     this.getTrack(data.data)
   });
+}
 }
 public cleanTracks(){
   while(this.tracksOf.length>0){

@@ -1,7 +1,7 @@
-<p>divisas works!</p>
+
 <body id="body-conversor">
     <br>
-    <form #musica="ngForm" >
+    <!--<form #musica="ngForm" >
         <input name="searchedVideo" id="searchedVideo" class="form-control" type="text" placeholder="Buscar artista" [(ngModel)]="searchedVideo">
         <button (click)="getVideos()" class="btn-search"><i class="bi bi-search"></i>Buscar</button>
     </form>
@@ -28,7 +28,7 @@
                 </td>
             </tr>
         </tbody>
-    </table>
+    </table>-->
         <div class="row">
             <div class="column col-md-8 col-lg-8 col-sm-12 d-sm-none d-md-block d-none d-sm-block align-self-start">
                 <table class="table">
@@ -37,7 +37,6 @@
                             <th colspan="2"></th>
                             <th scope="col" *ngFor="let code of currencyCodes">
                                 <div class="text-center">
-                                    <img src="../../../assets/icon/{{code | uppercase}}.ico" alt="" class="icon-coin">
                                     <p>{{code | uppercase}}</p>
                                 </div>
                             </th>
@@ -46,14 +45,14 @@
                     <tbody class="text-center">
                         <tr *ngFor="let tr of content">
                             <th scope="row">
-                                <img src="../../../assets/icon/{{tr.code | uppercase}}.ico" alt="" class="icon-coin">
+                                <!--<img src="../../../assets/icon/{{tr.code | uppercase}}.ico" alt="" class="icon-coin">-->
                                 <div class="row">
                                     <div class="text-center text">
                                         1 {{tr.code | uppercase}}
                                     </div>
                                 </div>
                             </th>
-                            <td *ngFor="let i of tr.amounts">{{i | number: '1-2,3'}}</td>
+                            <td *ngFor="let i of tr.amounts">{{i | number:'1.2-3'}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -63,25 +62,48 @@
                     <div class="title">
                         <h4>Conversor de divisas</h4>
                     </div>
-                    <form>
+                    <form #divisaForm="ngForm">
                         <div class="mb-3">
-                            <label for="old_amount" class="form-label label">Cantidad</label>
-                            <input  type="number" class="form-control form" id="exampleInputText1" min="0" required>
+                            <label for="amount" class="form-label label">Cantidad</label>
+                            <input  type="number" class="form-control form" id="exampleInputText1" [(ngModel)]="divisa.amount" min="0" required #amount="ngModel">
+                                <div *ngIf="amount.invalid" class="alert alert-danger my-1 p-1">
+                                    <div *ngIf="amount.errors?.['required']">
+                                        La cantidad es requerida
+                                    </div>
+                                </div>
                         </div>
-                        <label for="exampleInputText1" class="form-label label">De: </label>
-                        <select class="form-select form" aria-label="Default select example">
+                        <label for="from" class="form-label label" >De: </label>
+                        <select [(ngModel)]="divisa.from" class="form-select form" name="from" id="from" required #from="ngModel">
+                            <option [selected]>Elija una opcion</option>
+                            <option [value]="option" *ngFor="let option of currencyCodes">{{option | uppercase}}</option>
+                        </select>
+                        <div *ngIf="from.invalid" class="alert alert-danger my-1 p-1">
+                            <div *ngIf="from.errors?.['required']">
+                                La divisa de origen es requerida
+                            </div>
+                        </div>
+                        <label for="to" class="form-label label">A: </label>
+                        <select [(ngModel)]="divisa.to" name="to" id="to" required #to="ngModel" class="form-select form" >
                             <option selected>Elija una opcion</option>
                             <option [value]="option" *ngFor="let option of currencyCodes">{{option | uppercase}}</option>
                         </select>
-                        <label for="exampleInputText1" class="form-label label">A: </label>
-                        <select class="form-select form" aria-label="Default select example">
-                            <option selected>Elija una opcion</option>
-                            <option [value]="option" *ngFor="let option of currencyCodes">{{option | uppercase}}</option>
-                        </select>
+                        <div *ngIf="to.invalid" class="alert alert-danger my-1 p-1">
+                            <div *ngIf="to.errors?.['required']">
+                                La divisa de destino es requerida
+                            </div>
+                        </div>
                         <input id="disabled"class="form-control" type="text" aria-label="Disabled input example" disabled>
-                        <button type="submit" class="btn">Convertir</button>
+                        <button type="submit" [disabled]="divisaForm.form.invalid" class="btn" (click)="convertCurrencies(divisa.from,divisa.to,divisa.amount)">Convertir</button>
+                        <div class="mb-3" *ngIf="submitted">
+                            <label class="form-label">Conversion: {{result}}</label>
+                        </div>
+                        
+            <br>
+            <br>
                     </form>
                 </div>
             </div>
         </div>
+        <br>
+        <br>
 </body>

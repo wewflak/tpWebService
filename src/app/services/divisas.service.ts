@@ -26,20 +26,22 @@ export class DivisasService {
       return this._http.post("https://community-neutrino-currency-conversion.p.rapidapi.com/convert",body, httpOptions);
       }
 
-  public conversor(from:string, to:string, amount:number): Observable<any>{
-    const options = {
-      params: {
-        from: from,
-        to: to,
-        amount: amount
-      },
-      headers: new HttpHeaders({
-        'X-RapidAPI-Key': '18359b2048mshefa50201df80486p14268djsncfef2ea642ec',
-        'X-RapidAPI-Host': 'currency-converter18.p.rapidapi.com'
-      })
+private readonly apiKey: string = 'b7fc317da07f5bdd4b62bc3d';
+private readonly baseUrl: string = 'https://v6.exchangeratesapi.io'
+  public getExchangeRate(baseCurrency: string, targetCurrency: string, amount:number): Observable<any> {
+      let httpOptions={
+        params:{
+        'baseCurrency': baseCurrency,
+        'targetCurrency': targetCurrency
+        },
+        headers: new HttpHeaders({
+          'apiKey':'b7fc317da07f5bdd4b62bc3d'
+        })
+      }
+
+  
+      return this._http.get('https://v6.exchangerate-api.com/v6/'+this.apiKey+'/pair/'+baseCurrency+'/'+targetCurrency)
     }
-    return this._http.get('https://currency-converter18.p.rapidapi.com/api/v1/convert', options);
-}
 public getVideos(query:string,type:string,safesearch:boolean){
     
       let httpOptions={

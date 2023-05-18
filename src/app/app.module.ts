@@ -13,6 +13,7 @@ import { RouterModule } from '@angular/router';
 import { MoviesComponent } from './components/movies/movies.component';
 import { MovieDetailComponent } from './components/movie-detail/movie-detail.component';
 import { SafePipe } from './models/Pipe';
+import { DecimalPipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { SafePipe } from './models/Pipe';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    DecimalPipe
   ],
   exports:[RouterModule],
   providers: [],
