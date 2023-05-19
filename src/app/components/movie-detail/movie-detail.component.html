@@ -15,6 +15,16 @@
                     <div class="card-title">Certificado: </div>
                     <div class="card-text">{{detail.certification}}</div>
                 </div>
+                <ng-container *ngFor="let item of directors">
+                <div class="card-title" *ngIf="directors.length>1">Director {{directors.indexOf(item)+1}}: </div>
+                <div class="card-title" *ngIf="directors.length==1">Director: </div>
+                <div class="card-text">{{item}}</div>
+                </ng-container>
+                <ng-container *ngFor="let item of writers">
+                <div class="card-title">Escritor: {{writers.indexOf(item)+1}}: </div>
+                <div class="card-text">{{item}}</div>
+                </ng-container>
+                <div class="card-title" *ngIf="directors.length==0">No se encontro informacion sobre el cast de la pelicula</div>
             </div>
     </div>
         <div class="section-left col-8">
@@ -29,7 +39,7 @@
                     <span class="span-title">Año: </span> <span class="span-text"> {{detail.year}}</span>
                     </div>
                     <div class="bio-box2">
-                    <span class="span-title">Fecha de Estreno: </span> <span  class="span-text"> {{detail.released | date}}</span>
+                    <span class="span-title">Fecha de Estreno: </span> <span  class="span-text"> {{detail.released}}</span>
                     </div>
                     <div class="bio-box3">
                     <span class="span-title">Duracion: </span> <span  class="span-text"> {{detail.runtime}} minutos</span>
@@ -51,6 +61,17 @@
                 allowfullscreen>
 
                 </iframe>
+                <div class="actors">
+                    <div class="actor-card" *ngFor="let element of actorsObject">
+                        <div class="actor-img">
+                        <img [src]="element.img" alt="{{ element.name }}" style="width: 6rem;">
+                    </div>
+                        <div class="info">
+                            <div class="actor-name">{{ element.name }}</div>
+                            <div class="actor-role">{{ element.role }}</div>
+                        </div>
+                    </div>
+                </div>
             </div>
             
         </div>

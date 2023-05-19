@@ -50,4 +50,25 @@ export class MoviesService {
     .set('source', source);
     return this._http.post("https://google-translate1.p.rapidapi.com/language/translate/v2",body, httpOptions);
     }
+    public getCast(id:string):Observable<any>{
+      let httpOptions={
+        headers: new HttpHeaders({
+            'X-RapidAPI-Key': '18359b2048mshefa50201df80486p14268djsncfef2ea642ec',
+            'X-RapidAPI-Host': 'moviesminidatabase.p.rapidapi.com'
+        })
+      }
+      return this._http.get('https://moviesminidatabase.p.rapidapi.com/movie/id/'+id+'/cast/', httpOptions);
+    }
+    public getActorBio(id:string):Observable<any>{
+      let httpOptions={
+        headers: new HttpHeaders({
+            'X-RapidAPI-Key': '18359b2048mshefa50201df80486p14268djsncfef2ea642ec',
+            'X-RapidAPI-Host': 'moviesminidatabase.p.rapidapi.com'
+        }),
+        params:{
+          id:id
+        }
+      }
+      return this._http.get('https://moviesminidatabase.p.rapidapi.com/actor/id/'+id+'/', httpOptions);
+    }
 }

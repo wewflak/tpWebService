@@ -13,7 +13,7 @@ export class HoroscopoService {
       let httpOptions= {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'X-RapidAPI-Key': '18359b2048mshefa50201df80486p14268djsncfef2ea642ec',
+        'X-RapidAPI-Key': 'ad32c3dc6amshfb13847e8877c28p11f9fbjsn22ef143a7ee5',
         'X-RapidAPI-Host': 'horoscopes-ai.p.rapidapi.com'
       })
     }

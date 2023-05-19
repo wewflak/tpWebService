@@ -17,12 +17,12 @@ html, body{
 }
 body{
     color: #252422;
-    background-color: #fefeff;
     overflow-x: hidden;
     font-family: 'Poppins',sans-serif;
 }
 #body-conversor{
     background-color: #dcfefd;
+    height: 100vh;
 }
 table{
     font-size: 18px;
@@ -35,19 +35,20 @@ table{
 }
 #body-conversor .row .column{
     background-color: #dcfefd;
-    height: 60vh;
+    height: 100%;
     margin-top: 2%;
 }
 .menu{
     padding-top: 5%;
     background-color: #dcfefd;
-    height: 30rem;
+    height: 33rem;
     border: #006D77 0.1em solid;
     border-radius: 16px;
     border-left: none;
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
     margin-right: 1%;
+    padding-bottom: 5%;
 }
 
 .label{

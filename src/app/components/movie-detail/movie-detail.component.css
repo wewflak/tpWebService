@@ -70,3 +70,19 @@ body{
 .card-subinfo{
     display: flex;
 }
+.actors {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .actor-card {
+    flex-basis: calc(33.33% - 1rem); /* Adjust the width as per your requirement */
+    margin: 0.5rem;
+  }
+.actors .actor-card .info{
+    display: inline;
+}
+.actor-card .actor-img{
+    display: flex;
+    width: 6rem;
+}
