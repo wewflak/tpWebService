@@ -20,10 +20,12 @@ albumPicture!:string
 tracksOf:Array<Track>;
 artistSearched!:string
 objectData!:any
+lastSearch!:string
 sameArtist=false;
 deezerData: Array<Deezer>;
 artistData:Artist;
 submitted=false;
+searched=false
 artistsSelected=false;
 displayedColumns=['id', 'picture', 'name'];
 filterArtist:any;
@@ -46,16 +48,18 @@ constructor(private artistService: MusicaService, private router:Router){
   this.artistSearched=""
   this.artistData = new Artist()
   this.tracksOf = new Array<Track>
+  this.lastSearch = ''
 }
 getArtists() {
   console.log(this.artistSearched)
-  this.cleanTracks();
-  if(this.artistSearched.length==0){
+  if(this.artistSearched.length==0 ){
     console.log('no pasa')
     this.openModal()
   }else{
-  this.artistService.getArtist(this.artistSearched).subscribe(async (data: any) => {
+    this.cleanTracks();
+    this.artistService.getArtist(this.artistSearched).subscribe(async (data: any) => {
     this.submitted = true
+    this.searched = true
     this.objectData = await data.data;
     this.deezerData= data.data
     this.artistId = data.data[0].artist.id

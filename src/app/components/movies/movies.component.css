@@ -1,0 +1,21 @@
+
+.head-search .btn-search{
+    background-color: #023E8A;
+    color: #fefeff;
+    border: solid transparent 0.1em;
+    margin: 1%;
+    border-radius: 12px;
+    display: inline-block;
+}
+
+.search-bar{
+    align-items: center;
+    justify-content: center;
+    display: inline-block;
+}
+
+.head-search input{
+    margin-left: 2%;
+    display: inline-block;
+    width: 70%;
+}

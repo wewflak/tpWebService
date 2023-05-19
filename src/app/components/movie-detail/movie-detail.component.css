@@ -16,13 +16,23 @@ body{
 .container{
     display: flex;
 }
-.section-rigth{
+.section-right{
+    margin-top: 3%;
     width: 30%;
     float: right;
+    border-right: solid #252422 0.1em;
+    margin-right: 2%;
 }
 .section-left{
+    
+    margin-top: 3%;
     width: 65%;
     float: left;
+}
+.section-right .card-img img{
+    width:18rem;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
 }
 .bio{
     font:inherit;
@@ -31,6 +41,7 @@ body{
     position: absolute;
     padding: 0.5em;
     top:220px;
+    margin-bottom: 2%;
 }
 .span-title{
     font-size: 17px;
@@ -42,5 +53,20 @@ body{
     vertical-align: bottom;
 }
 .bio-box1, .bio-box2, .bio-box3, .bio-box4{
+    display: flex;
+}
+.card-info{
+    width: 18rem;
+    background-color: #3a0ca3;
+    color: #fefeff;
+    
+}
+.card-title{
+    font-weight: 500;
+}
+.card-title, .card-text{
+    margin-left: 2%;
+}
+.card-subinfo{
     display: flex;
 }

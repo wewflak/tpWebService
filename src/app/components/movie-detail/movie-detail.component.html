@@ -1,10 +1,20 @@
-<div class="container">
+<div class="container mb-4">
     <div class="section-right col-4">
             <div class="name">
                 <h3>{{detail.title}}</h3>
             </div>
             <div class="card-img">
-                <img src="{{detail.poster}}" alt="" style="width:18rem">
+                <img src="{{detail.poster}}" alt="">
+            </div>
+            <div class="card-info">
+                <div class="card-subinfo">
+                    <div class="card-title">Clasificacion por edad: </div>
+                    <div class="card-text">{{detail.age_rating}}</div>
+                </div>
+                <div class="card-subinfo">
+                    <div class="card-title">Certificado: </div>
+                    <div class="card-text">{{detail.certification}}</div>
+                </div>
             </div>
     </div>
         <div class="section-left col-8">
@@ -19,7 +29,7 @@
                     <span class="span-title">Año: </span> <span class="span-text"> {{detail.year}}</span>
                     </div>
                     <div class="bio-box2">
-                    <span class="span-title">Fecha de Nacimiento: </span> <span  class="span-text"> {{detail.released | date}}</span>
+                    <span class="span-title">Fecha de Estreno: </span> <span  class="span-text"> {{detail.released | date}}</span>
                     </div>
                     <div class="bio-box3">
                     <span class="span-title">Duracion: </span> <span  class="span-text"> {{detail.runtime}} minutos</span>
@@ -34,7 +44,7 @@
                     <span class="span-title">Estado: </span> <span  class="span-text"> {{detail.status}}</span>
                     </div>
             </div>
-            <div class="youtube">
+            <div class="youtube mt-3">
                 <iframe width="560" height="315" [src]="embedUrl" 
                 title="YouTube video player" frameborder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
@@ -44,4 +54,6 @@
             </div>
             
         </div>
+        <br>
+        <br>
 </div>

@@ -67,14 +67,14 @@ export class MovieDetailComponent implements OnInit{
   }
   changeCountry(codigo_pais:string):string{
     const paises:{[codigo:string]:string} = {
-      'us': 'Estados Unidos',
-      'ar': 'Argentina',
-      'fr': 'Francia',
-      'gb': 'Reino Unido',
-      'it': 'Italia',
-      'kr': 'Corea del Sur',
-      'hk': 'China',
-      'jp': 'Japón'
+      'us': ' Estados Unidos',
+      'ar': ' Argentina',
+      'fr': ' Francia',
+      'gb': ' Reino Unido',
+      'it': ' Italia',
+      'kr': ' Corea del Sur',
+      'hk': ' China',
+      'jp': ' Japón'
   }
 
   if (codigo_pais in paises){
@@ -96,13 +96,13 @@ export class MovieDetailComponent implements OnInit{
   }
   changeLanguage(codigoIdioma: string): string {
     const idiomas: {[codigo: string]: string} = {
-      'es': 'Español',
-      'fr': 'Francés',
-      'en': 'Inglés',
-      'it': 'Italiano',
-      'ko': 'Coreano',
-      'cn': 'Chino',
-      'ja': 'Japonés'
+      'es': ' Español',
+      'fr': ' Francés',
+      'en': ' Inglés',
+      'it': ' Italiano',
+      'ko': ' Coreano',
+      'cn': ' Chino',
+      'ja': ' Japonés'
     };
   
     if (codigoIdioma in idiomas) {
