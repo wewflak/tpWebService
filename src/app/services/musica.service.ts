@@ -23,24 +23,4 @@ export class MusicaService {
     public getTrack(trackId:number){
       
     }
-    // getArtists(queryString: any) {
-    //   let apiUrl = 'https://api.deezer.com/search/artist?q={queryString}';
-    //   return this._http.get(apiUrl).subscribe(async (data: any) => {
-    //     this.artistsData = await data.data;
-    //   });
-    // }
-  
-    // getTopTracksArtists(artistID: any) {
-    //   let apiUrl = 'https://api.deezer.com/artist/{artistID}/top';
-    //   return this._http.get(apiUrl).subscribe(async (data: any) => {
-    //     this.artistsTopTracksData = await data.data;
-    //   });
-    // }
-  
-    // getArtistsAlbums(artistID: any) {
-    //   let apiUrl = 'https://api.deezer.com/artist/{artistID}/albums';
-    //   return this._http.get(apiUrl).subscribe(async (data: any) => {
-    //     this.artistsAlbumsData = await data.data;
-    //   });
-    // }
   }

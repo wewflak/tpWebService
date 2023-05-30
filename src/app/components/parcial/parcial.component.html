@@ -1,0 +1,44 @@
+<p>parcial works!</p>
+<form #musica="ngForm" >
+    <input name="ipSearched" id="ipSearched" class="form-control" type="text" placeholder="Buscar Ip" [(ngModel)]="ipSearched">
+    <button (click)="getIpInfo()" class="btn-search">
+        <i class="bi bi-search"></i>Buscar</button>
+</form>
+    <div class="col-sm-12  col-md-12 col-12 cards" >
+        <div class="col-lg-4 col-md-4 col-sm-6 col-12"  >
+            <div class="card" style="width: 18rem;" *ngIf="submited">
+                <div class="card-body">
+                    <h5 class="card-title">{{ipSearched}}</h5>
+                    
+                    <div class="bio-box1">
+                    <span class="span-title">Pais: </span> <span  class="span-text"> {{ipObject.pais}}</span>
+                    </div>
+                    
+                    <div class="bio-box2">
+                    <span class="span-title">Ciudad: </span> <span  class="span-text"> {{ipObject.ciudad}}</span>
+                    </div>
+                    
+                    <div class="bio-box2">
+                    <span class="span-title">Fecha: </span> <span  class="span-text"> {{ipObject.fecha | date}}</span>
+                    </div>
+                    
+                    <div class="bio-box2">
+                    <span class="span-title">Hora: </span> <span  class="span-text"> {{ipObject.hora}}</span>
+                    </div>
+                    
+                    <div class="bio-box2">
+                    <span class="span-title">Zona Horaria: </span> <span  class="span-text"> {{ipObject.zona}}</span>
+                    </div>
+                    <div class="button-box">
+                        <a href="https://maps.google.com/?q={{this.latitude}},{{this.longitude}}">Ir al link</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<div *ngIf="submited">
+    <button class="button" (click)="prueba()">
+        Ver en consola
+    </button>
+    <h5>{{direccion}}</h5>
+</div>

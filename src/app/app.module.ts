@@ -14,6 +14,11 @@ import { MoviesComponent } from './components/movies/movies.component';
 import { MovieDetailComponent } from './components/movie-detail/movie-detail.component';
 import { SafePipe } from './models/Pipe';
 import { DecimalPipe } from '@angular/common';
+import { AudioTextComponent } from './components/audio-text/audio-text.component';
+import { BooksComponent } from './components/books/books.component';
+import { QrGeneratorComponent } from './components/qr-generator/qr-generator.component';
+import { WeatherComponent } from './components/weather/weather.component';
+import { ParcialComponent } from './components/parcial/parcial.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +29,12 @@ import { DecimalPipe } from '@angular/common';
     HeaderComponent,
     MoviesComponent,
     MovieDetailComponent,
-    SafePipe
+    SafePipe,
+    AudioTextComponent,
+    BooksComponent,
+    QrGeneratorComponent,
+    WeatherComponent,
+    ParcialComponent
   ],
   imports: [
     BrowserModule,

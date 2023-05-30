@@ -1,0 +1,62 @@
+<p>books works!</p>
+<div class="head-search">
+    <br>
+    <form #musica="ngForm" >
+        <input name="bookSearched" id="bookSearched" class="form-control" type="text" placeholder="Buscar libro" [(ngModel)]="bookSearched">
+        <button (click)="getBooks()" class="btn-search"><i class="bi bi-search"></i>Buscar</button>
+    </form>
+</div>
+<table class="table" *ngIf="submitted">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Titulo</th>
+            <th scope="col">Portada</th>
+            <th scope="col" *ngIf="bookAuthors.length==1">Autor</th>
+            <th scope="col" *ngIf="bookAuthors.length>1">Autores</th>
+        </tr>
+    </thead>
+    <tbody >
+        <tr *ngFor="let item of booksArray">
+            <th scope="row">
+                <button (click)="getBookDescription(item.bookId)" style="background-color: transparent;border: none;">{{item.bookId}}</button></th>
+            <td>{{item.bookName}}</td>
+            <td><img src="{{item.bookCover}}" alt=""></td>
+            <ng-container *ngFor="let element of item.bookAuthor">
+            <td>{{element}}</td>
+        </ng-container>
+        </tr>
+    </tbody>
+</table>
+<div class="modal fade" id="bookDescription" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                
+                <h3 class="modal-title" id="exampleModalLabel">{{bookName}}</h3>
+                <h5 class="modal-title" id="exampleModalLabel">Sinopsis: </h5>
+                <hr>
+                </div>
+                <p>{{bookDescription}}</p>
+        
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+                </div>
+                </div>
+</div>
+<div class="modal fade" id="bookModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                
+                <h5 class="modal-title" id="exampleModalLabel">Error en la busqueda</h5>
+                </div>
+                <span>No busco ninguna pelicula</span>
+        
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+                </div>
+                </div>
+</div>

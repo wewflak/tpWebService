@@ -93,6 +93,6 @@ public async convertCurrencies(baseCurrency: string, targetCurrency: string, amo
 }
   ngOnInit(): void{
 
-    this.fetchExchangeRates()
+    //this.fetchExchangeRates()
   }
 }
